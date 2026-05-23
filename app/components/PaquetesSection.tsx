@@ -178,6 +178,11 @@ export default function PaquetesSection() {
             ¿No sabes cuál elegir? Haz el diagnóstico y te recomendamos uno.
           </a>
         </div>
+        <div className="reveal" style={{ ['--reveal-delay' as string]: '.3s', textAlign: 'center', marginTop: '2.5rem' }}>
+          <a href="#guia-paquetes" className="btn btn-primary magnetic">
+            Ver guía completa de paquetes <span className="arrow">→</span>
+          </a>
+        </div>
       </div>
     </section>
   );
