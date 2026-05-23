@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 function buildHtml(d: Record<string, string>) {
   const row = (label: string, val: string) => `
     <tr>
@@ -59,6 +57,7 @@ function buildHtml(d: Record<string, string>) {
 export async function POST(req: NextRequest) {
   try {
     const data = await req.json();
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     await resend.emails.send({
       from: process.env.FROM_EMAIL || 'diagnostico@weblynmx.com',
