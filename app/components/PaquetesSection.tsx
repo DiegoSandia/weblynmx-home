@@ -159,16 +159,6 @@ export default function PaquetesSection() {
         </div>
 
         <div className="meta-ads-banner reveal" style={{ ['--reveal-delay' as string]: '.1s' }}>
-          <div className="meta-ads-icon">
-            <img
-              src="/Servicios/Meta Ads.png"
-              alt=""
-              onError={(e) => {
-                const p = (e.target as HTMLImageElement).parentElement;
-                if (p) { p.textContent = '⚡'; p.style.color = 'var(--accent)'; }
-              }}
-            />
-          </div>
           <div className="meta-ads-text">
             <strong>⚡ Add-on disponible: Meta Ads Optimizado</strong>
             <p>Suma campañas pagadas a cualquier paquete. Configuración, creativos y optimización mensual.</p>
