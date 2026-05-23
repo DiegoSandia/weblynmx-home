@@ -205,11 +205,11 @@ export default function Hero() {
           WeblynMX transforma negocios que se ven amateur en marcas que se ven premium. Sin relleno. Sin excusas.
         </p>
         <div className="hero-ctas">
-          <a href="/diagnostico" className="btn btn-primary magnetic">
-            Solicitar diagnóstico <span className="arrow">→</span>
+          <a href="/diagnostico-marca" className="btn btn-primary magnetic">
+            Diagnóstico de Marca <span className="arrow">→</span>
           </a>
-          <a href="#proyectos" className="btn btn-outline magnetic">
-            Ver proyectos
+          <a href="/diagnostico-conversion" className="btn btn-outline magnetic">
+            Diagnóstico de Conversión
           </a>
         </div>
         <p className="hero-trust">

@@ -59,21 +59,16 @@ export default function DiagnosticoCTA() {
         </p>
 
         <div className="dgcta-btns">
-          <a href="/diagnostico" className="btn btn-primary magnetic dgcta-btn-main">
-            Solicitar diagnóstico <span className="arrow">→</span>
+          <a href="/diagnostico-marca" className="btn btn-primary magnetic dgcta-btn-main">
+            Diagnóstico de Marca <span className="arrow">→</span>
           </a>
-          <a
-            href={WA}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-outline magnetic"
-          >
-            Prefiero WhatsApp
+          <a href="/diagnostico-conversion" className="btn btn-outline magnetic">
+            Diagnóstico de Conversión
           </a>
         </div>
 
         <p className="dgcta-footnote">
-          Sin formulario eterno. Sin ventas agresivas. Pura claridad.
+          Sin ventas agresivas · Gratis · Respuesta en menos de 24 h
         </p>
       </div>
     </section>

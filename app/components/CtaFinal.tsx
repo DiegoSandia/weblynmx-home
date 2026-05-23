@@ -11,13 +11,17 @@ export default function CtaFinal() {
       <p className="cta-sub reveal" style={{ ['--reveal-delay' as string]: '.1s' }}>
         Comenzamos con una conversación. Sin presión. Sin términos técnicos.
       </p>
-      <a
-        href="#cotizar"
-        className="btn btn-primary cta-button-big magnetic reveal"
-        style={{ ['--reveal-delay' as string]: '.2s' }}
+      <div
+        className="reveal"
+        style={{ ['--reveal-delay' as string]: '.2s', display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}
       >
-        Cotizar mi proyecto <span className="arrow">→</span>
-      </a>
+        <a href="#cotizar" className="btn btn-primary cta-button-big magnetic">
+          Cotizar mi proyecto <span className="arrow">→</span>
+        </a>
+        <a href="/diagnostico" className="btn btn-outline magnetic">
+          Pedir diagnóstico gratis
+        </a>
+      </div>
       <div className="cta-badge reveal" style={{ ['--reveal-delay' as string]: '.3s' }}>
         <span className="dot"></span>
         Respondemos en menos de 2 horas

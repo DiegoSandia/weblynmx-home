@@ -117,9 +117,14 @@ export default function DiagnosticoSection() {
         </div>
 
         <div className="dg-cta-wrap" data-dg-reveal style={{ transitionDelay: '0.4s' }}>
-          <a href="/diagnostico" className="btn btn-primary magnetic dg-cta-btn">
-            Comenzar diagnóstico <span className="arrow">→</span>
-          </a>
+          <div style={{ display: 'flex', gap: '0.85rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <a href="/diagnostico-marca" className="btn btn-primary magnetic dg-cta-btn">
+              Diagnóstico de Marca <span className="arrow">→</span>
+            </a>
+            <a href="/diagnostico-conversion" className="btn btn-outline magnetic">
+              Diagnóstico de Conversión
+            </a>
+          </div>
           <p className="dg-cta-note">Gratis · Sin compromiso · Respuesta en &lt; 24 h</p>
         </div>
       </div>
