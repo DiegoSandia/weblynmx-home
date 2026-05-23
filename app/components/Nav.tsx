@@ -22,6 +22,7 @@ export default function Nav() {
       </a>
       <ul className="nav-links">
         <li><a href="/paquetes">Paquetes</a></li>
+        <li><a href="/diagnostico">Diagnóstico</a></li>
         <li><a href="#proyectos">Portafolio</a></li>
         <li><a href="#nosotros">Nosotros</a></li>
         <li><a href="#contacto">Contacto</a></li>
