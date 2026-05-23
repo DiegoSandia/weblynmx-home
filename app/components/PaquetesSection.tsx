@@ -179,7 +179,7 @@ export default function PaquetesSection() {
           </a>
         </div>
         <div className="reveal" style={{ ['--reveal-delay' as string]: '.3s', textAlign: 'center', marginTop: '2.5rem' }}>
-          <a href="#guia-paquetes" className="btn btn-primary magnetic">
+          <a href="/paquetes" className="btn btn-primary magnetic">
             Ver guía completa de paquetes <span className="arrow">→</span>
           </a>
         </div>

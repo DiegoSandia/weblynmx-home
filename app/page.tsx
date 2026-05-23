@@ -3,7 +3,6 @@ import Hero from './components/Hero';
 import DiagnosticoSection from './components/DiagnosticoSection';
 import TransformacionSection from './components/TransformacionSection';
 import PaquetesSection from './components/PaquetesSection';
-import GuiaPaquetesSection from './components/GuiaPaquetesSection';
 import PortfolioSection from './components/PortfolioSection';
 import TestimonialsSection from './components/TestimonialsSection';
 import DiagnosticoCTA from './components/DiagnosticoCTA';
@@ -23,7 +22,6 @@ export default function Home() {
       <DiagnosticoSection />
       <TransformacionSection />
       <PaquetesSection />
-      <GuiaPaquetesSection />
       <PortfolioSection />
       <TestimonialsSection />
       <DiagnosticoCTA />
