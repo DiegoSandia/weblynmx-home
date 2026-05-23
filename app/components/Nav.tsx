@@ -17,8 +17,7 @@ export default function Nav() {
   return (
     <nav className="nav" id="nav">
       <a href="#top" className="nav-logo">
-        <img src="/Icono.png" alt="WeblynMX" className="nav-logo-img" width={32} height={32} />
-        <span>WeblynMX</span>
+        <img src="/logo-dark.png" alt="WeblynMX" className="nav-logo-img" />
       </a>
       <ul className="nav-links">
         <li><a href="#servicios">Servicios</a></li>
