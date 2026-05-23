@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Cursor from '../components/Cursor';
 
 export const metadata: Metadata = {
   title: 'Diagnóstico Gratuito — WeblynMX',
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
 export default function DiagnosticoPage() {
   return (
     <main className="dg-page">
+      <Cursor />
       <div className="dg-page-blob" aria-hidden="true" />
 
       <div className="dg-page-content" style={{ maxWidth: '700px' }}>
