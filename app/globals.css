@@ -208,12 +208,12 @@ body.cursor-hover #cursor-dot { opacity: 0; }
   width: 34px;
   height: 34px;
   object-fit: contain;
-  mix-blend-mode: screen;
   flex-shrink: 0;
+  filter: drop-shadow(0 0 6px rgba(139,255,97,0.4));
   transition: filter 0.25s;
 }
 .nav-logo:hover .nav-logo-img {
-  filter: drop-shadow(0 0 10px rgba(139,255,97,0.7));
+  filter: drop-shadow(0 0 12px rgba(139,255,97,0.75));
 }
 .nav-links {
   display: flex;
