@@ -199,7 +199,7 @@ export default function Hero() {
           <span className="eyebrow">Agencia Web · CDMX</span>
         </div>
         <h1 className="hero-headline" id="hero-headline">
-          Cada día que tu negocio se ve amateur, un cliente elige a tu <span className="accent">competencia.</span>
+          Tu negocio es bueno. Tu presencia digital, <span className="accent">no tanto.</span>
         </h1>
         <p className="hero-subtext">
           WeblynMX transforma negocios que se ven amateur en marcas que se ven premium. Sin relleno. Sin excusas.
