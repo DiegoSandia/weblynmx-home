@@ -205,9 +205,10 @@ body.cursor-hover #cursor-dot { opacity: 0; }
   letter-spacing: -0.01em;
 }
 .nav-logo-img {
-  height: 44px;
+  height: 52px;
   width: auto;
   object-fit: contain;
+  mix-blend-mode: screen;
   transition: opacity 0.25s;
 }
 .nav-logo:hover .nav-logo-img {
