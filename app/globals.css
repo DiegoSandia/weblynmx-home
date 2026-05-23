@@ -456,6 +456,7 @@ section { position: relative; }
   z-index: 3;
 }
 /* VERTICAL (Menú) */
+.ba-vertical { aspect-ratio: 4/5; }
 .ba-vertical .ba-before-wrap { clip-path: inset(0 0 50% 0); }
 .ba-vertical .ba-divider {
   position: absolute;
