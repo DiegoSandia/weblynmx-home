@@ -21,7 +21,6 @@ export default function Nav() {
         <span>WeblynMX</span>
       </a>
       <ul className="nav-links">
-        <li><a href="/#servicios">Servicios</a></li>
         <li><a href="/paquetes">Paquetes</a></li>
         <li><a href="/diagnostico">Diagnóstico</a></li>
         <li><a href="/nosotros">Nosotros</a></li>
