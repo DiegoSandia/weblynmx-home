@@ -4,10 +4,6 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'WeblynMX · Websites that grow businesses.',
   description: 'WeblynMX transforma negocios que se ven amateur en marcas que se ven premium. Sitios, landings y branding nivel agencia, en CDMX.',
-  icons: {
-    icon: '/Icono.png',
-    apple: '/Icono.png',
-  },
 };
 
 export const viewport: Viewport = {

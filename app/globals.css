@@ -204,16 +204,15 @@ body.cursor-hover #cursor-dot { opacity: 0; }
   font-size: 1.05rem;
   letter-spacing: -0.01em;
 }
-.nav-logo-mark {
-  width: 28px; height: 28px;
+.nav-logo-img {
+  width: 32px; height: 32px;
   border-radius: 50%;
-  border: 1.5px solid var(--accent);
-  display: grid;
-  place-items: center;
-  color: var(--accent);
-  font-size: 0.85rem;
-  font-weight: 700;
-  box-shadow: 0 0 18px rgba(139,255,97,0.25);
+  object-fit: cover;
+  filter: drop-shadow(0 0 8px rgba(139,255,97,0.5));
+  transition: filter 0.25s;
+}
+.nav-logo:hover .nav-logo-img {
+  filter: drop-shadow(0 0 14px rgba(139,255,97,0.8));
 }
 .nav-links {
   display: flex;
