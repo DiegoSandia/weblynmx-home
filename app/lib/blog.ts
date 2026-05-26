@@ -10,7 +10,26 @@ export interface PostMeta {
   date: string;
   slug: string;
   ogDescription: string;
+  category: string;
 }
+
+export const CATEGORIES: Record<string, string> = {
+  'precios':       'Precios y presupuesto',
+  'por-industria': 'Por industria',
+  'comparativas':  'Comparativas',
+  'problemas':     'Problemas frecuentes',
+  'guias':         'Guías y conceptos',
+  'general':       'General',
+};
+
+export const CATEGORY_ORDER = [
+  'precios',
+  'por-industria',
+  'comparativas',
+  'problemas',
+  'guias',
+  'general',
+];
 
 // GPT sometimes wraps output in ```mdx ... ``` — strip it
 function clean(raw: string): string {
@@ -24,16 +43,28 @@ export function getAllPosts(): PostMeta[] {
     .filter(f => f.endsWith('.mdx'))
     .map(file => {
       const { data } = matter(clean(fs.readFileSync(path.join(BLOG_DIR, file), 'utf8')));
-      const slug = file.replace('.mdx', '');
+      const slug = file.replace('.mdx', ''); // Always use filename as slug — never frontmatter
       return {
-        title: data.title ?? slug,
-        description: data.description ?? '',
-        date: data.date ?? '',
-        slug: data.slug ?? slug,
+        title:         data.title        ?? slug,
+        description:   data.description  ?? '',
+        date:          data.date         ?? '',
+        slug,
         ogDescription: data.ogDescription ?? '',
+        category:      data.category     ?? 'general',
       };
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+}
+
+export function getPostsByCategory(): Record<string, PostMeta[]> {
+  const posts = getAllPosts();
+  const grouped: Record<string, PostMeta[]> = {};
+  for (const post of posts) {
+    const cat = post.category ?? 'general';
+    if (!grouped[cat]) grouped[cat] = [];
+    grouped[cat].push(post);
+  }
+  return grouped;
 }
 
 export function getPostBySlug(slug: string): { meta: PostMeta; content: string } | null {
@@ -42,11 +73,12 @@ export function getPostBySlug(slug: string): { meta: PostMeta; content: string }
   const { data, content } = matter(clean(fs.readFileSync(file, 'utf8')));
   return {
     meta: {
-      title: data.title ?? slug,
-      description: data.description ?? '',
-      date: data.date ?? '',
-      slug: data.slug ?? slug,
+      title:         data.title        ?? slug,
+      description:   data.description  ?? '',
+      date:          data.date         ?? '',
+      slug:          data.slug         ?? slug,
       ogDescription: data.ogDescription ?? '',
+      category:      data.category     ?? 'general',
     },
     content,
   };
