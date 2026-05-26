@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "generate-blog": "node scripts/generate-blog.js"
+    "generate-blog": "node scripts/generate-blog.js --batch 5",
+    "generate-blog:3": "node scripts/generate-blog.js --batch 3"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

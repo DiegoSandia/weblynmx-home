@@ -40,7 +40,35 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-const SYSTEM_PROMPT = `Eres el redactor de contenido de WeblynMX, un estudio digital premium en CDMX. VOZ DE MARCA: directo, sin relleno, orientado a resultados, oraciones cortas y contundentes, hablas del problema del cliente antes que de WeblynMX, nunca dices somos apasionados o soluciones integrales o años de experiencia, sin signos de exclamación, tu negocio aparece más que nosotros. CLIENTE IDEAL: dueño de negocio en México que ya vende pero se ve amateur digitalmente. ESTRUCTURA DEL ARTÍCULO: 1) Título H1 con la keyword 2) Intro de 2-3 líneas que golpee el problema real 3) 3-4 secciones con H2 4) Datos concretos cuando existan 5) CTA final: ¿Tu negocio necesita esto? Comenzamos con una conversación. con link a weblynmx.com/diagnostico. FORMATO: entrega directo en MDX con frontmatter que incluya title, description, date, slug, y ogDescription.`;
+// Batch size: how many NEW articles to generate per run (default 5, override with --batch N)
+const batchArg = process.argv.indexOf('--batch');
+const BATCH_SIZE = batchArg !== -1 ? parseInt(process.argv[batchArg + 1], 10) : 5;
+
+const SYSTEM_PROMPT = `Eres el redactor de contenido de WeblynMX, un estudio digital premium en CDMX.
+
+VOZ DE MARCA:
+- Directo, sin relleno, orientado a resultados
+- Oraciones cortas y contundentes
+- Hablas del problema del cliente antes que de WeblynMX
+- Nunca dices: "somos apasionados", "soluciones integrales", "años de experiencia"
+- Sin signos de exclamación
+- "Tu negocio" aparece más que "nosotros"
+- Usas datos reales y ejemplos concretos cuando existen
+
+CLIENTE IDEAL: dueño de negocio en México que ya vende pero se ve amateur digitalmente. Tiene entre 30-55 años, opera en CDMX o ciudades principales, entiende que su imagen digital importa pero no sabe exactamente qué hacer.
+
+LONGITUD: el artículo debe tener aproximadamente 1500 palabras. Desarrolla cada sección con profundidad real, ejemplos concretos y contexto para México.
+
+ESTRUCTURA DEL ARTÍCULO:
+1) Frontmatter MDX con: title, description, date, slug, ogDescription
+2) Título H1 con la keyword
+3) Intro de 3-4 líneas que golpee el problema real sin rodeos
+4) 5-6 secciones con H2, cada una con al menos 2-3 párrafos desarrollados
+5) Usa listas cuando aporten claridad, no para rellenar
+6) Incluye datos concretos, precios reales en MXN cuando aplique, ejemplos de negocios mexicanos
+7) CTA final: "¿Tu negocio necesita esto? Comenzamos con una conversación." con link a weblynmx.com/diagnostico
+
+FORMATO: entrega directo en MDX válido con frontmatter. Sin bloques de código envolviendo el resultado.`;
 
 async function generateArticle(keyword) {
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -50,11 +78,11 @@ async function generateArticle(keyword) {
       'Authorization': `Bearer ${OPENAI_API_KEY}`,
     },
     body: JSON.stringify({
-      model: 'gpt-4o',
-      max_tokens: 2048,
+      model: 'gpt-5.4-mini',
+      max_completion_tokens: 4000,
       messages: [
         { role: 'system', content: SYSTEM_PROMPT },
-        { role: 'user', content: `Escribe un artículo optimizado para la keyword: ${keyword}` },
+        { role: 'user', content: `Escribe un artículo de aproximadamente 1500 palabras optimizado para la keyword: ${keyword}` },
       ],
     }),
   });
@@ -82,13 +110,18 @@ async function main() {
   const blogDir = path.join(__dirname, '..', 'content', 'blog');
   fs.mkdirSync(blogDir, { recursive: true });
 
-  console.log(`\nWeblynMX Blog Generator — ${keywords.length} keywords\n`);
+  console.log(`\nWeblynMX Blog Generator — batch de ${BATCH_SIZE} artículos (~1500 palabras c/u)\n`);
 
   let generated = 0;
   let skipped = 0;
   let errors = 0;
 
   for (let i = 0; i < keywords.length; i++) {
+    if (generated >= BATCH_SIZE) {
+      console.log(`\nBatch completado (${BATCH_SIZE} artículos). Corre el script de nuevo para continuar.`);
+      break;
+    }
+
     const keyword = keywords[i];
     const slug = slugify(keyword);
     const filePath = path.join(blogDir, `${slug}.mdx`);
