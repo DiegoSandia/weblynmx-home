@@ -10,6 +10,7 @@
     "generate-blog:3": "node scripts/generate-blog.js --batch 3"
   },
   "dependencies": {
+    "@vercel/speed-insights": "^2.0.0",
     "gray-matter": "^4.0.3",
     "marked": "^18.0.4",
     "next": "16.2.6",
