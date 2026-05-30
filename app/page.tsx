@@ -4,6 +4,7 @@ import DiagnosticoSection from './components/DiagnosticoSection';
 import TransformacionSection from './components/TransformacionSection';
 import PaquetesSection from './components/PaquetesSection';
 import DiagnosticoCTA from './components/DiagnosticoCTA';
+import BlogPreviewSection from './components/BlogPreviewSection';
 import ContactSection from './components/ContactSection';
 import CtaFinal from './components/CtaFinal';
 import Footer from './components/Footer';
@@ -21,6 +22,7 @@ export default function Home() {
       <TransformacionSection />
       <PaquetesSection />
       <DiagnosticoCTA />
+      <BlogPreviewSection />
       <ContactSection />
       <CtaFinal />
       <Footer />
